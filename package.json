@@ -10,5 +10,14 @@
     "unit"
   ],
   "author": "EventMobi",
-  "license": "MPL 2.0"
+  "license": "MPL 2.0",
+  "devDependencies": {
+    "matchdep": "0.3.0",
+    "grunt": "0.4.5",
+    "jshint-stylish": "1.0.0",
+    "grunt-contrib-jshint": "0.10.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
 }
