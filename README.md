@@ -12,3 +12,7 @@ A framework that makes Angular Unit Test's easier to write.
 
 Just include `node_modules/lib/easy-test.js` into your test files. Make sure it
 comes after you've included `angular.js`.
+
+# documentation
+
+See the [jsdocs](http://eventmobi.github.io/angular-easy-test).
