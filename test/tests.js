@@ -8,7 +8,7 @@ describe('angular-easy-test', function() {
   var properties = [ 'one', 'two', 'test', 'something', 'somethingElse' ];
 
   beforeEach(function() {
-    mockModule('simpleapp');
+    EasyTest.mockModule('simpleapp');
   });
 
   describe('#mockModule', function() {
@@ -19,7 +19,7 @@ describe('angular-easy-test', function() {
     });
 
     it('should be able to provide fake services', function() {
-      mockModule('simpleapp', [{
+      EasyTest.mockModule('simpleapp', [{
         name: 'FakeService',
         provider: { testFunction: function() {} }
       }]);
@@ -34,7 +34,7 @@ describe('angular-easy-test', function() {
 
     it('should injectify things properly', function() {
       var serviceNames = ['TestService1', '$q', '$rootScope'],
-      services = injectify(serviceNames.slice(0));
+      services = EasyTest.injectify(serviceNames.slice(0));
 
       angular.forEach(serviceNames, function(serviceName) {
         expect(services).to.have.property(serviceName);
@@ -47,7 +47,7 @@ describe('angular-easy-test', function() {
 
     var context;
     beforeEach(function() {
-      context = createTestContext('TestController');
+      context = EasyTest.createTestContext('TestController');
     });
 
     it('should look like a test context', function() {
@@ -67,8 +67,8 @@ describe('angular-easy-test', function() {
   describe('#testScope', function() {
 
     it('test scope should work passing in a test context', function() {
-      var context = createTestContext('TestController');
-      testScope(context, {
+      var context = EasyTest.createTestContext('TestController');
+      EasyTest.testScope(context, {
         'function': 'one',
         'string': 'two',
         'boolean': 'test',
@@ -77,7 +77,7 @@ describe('angular-easy-test', function() {
     });
 
     it('test scope should work passing in a controller\'s name', function() {
-      testScope('TestController', {
+      EasyTest.testScope('TestController', {
         'function': 'one',
         'string': 'two',
         'boolean': 'test',
@@ -90,7 +90,7 @@ describe('angular-easy-test', function() {
   describe('#compileDirective', function() {
 
     it.skip('should compile directive correctly', function() {
-      var element = compileDirective('<div test-directive></div>');
+      var element = EasyTest.compileDirective('<div test-directive></div>');
     });
 
   });
