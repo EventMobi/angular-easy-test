@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: easy-test.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: easy-test.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * Framework for making Angular Unit Test's easier to write.
+ */
+(function() {
+	'use strict';
+
+	/**
+	 * @class EasyTest
+	 */
+	function EasyTest() {}
+
+	/**
+	 * @function injectify
+	 * @memberof EasyTest
+	 * @description
+	 *
+	 * Injects a number of services and returns an object containing the injected
+	 * services.
+	 *
+	 * @param {array} injectibles An array of service names to inject.
+	 *
+	 * @returns {object} An object containing the services that were injected.
+	 *
+	 * @example
+	 *
+	 &lt;pre>
+	   var services = window.injectify(['MyServiceOne', 'MyServiceTwo']);
+	   expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);
+	 &lt;/pre>
+	 */
+	EasyTest.injectify = function injectify(injectibles) {
+		var obj = [];
+		injectibles.push(function() {
+			for (var i = 0, l = arguments.length; i &lt; l; i++) {
+				obj[injectibles[i]] = arguments[i];
+			}
+		});
+		inject(injectibles);
+		return obj;
+	};
+
+	/**
+	 * @memberof EasyTest
+	 * @description
+	 *
+	 * Mocks a specified module that has already been registered with angular.
+	 * Optionally registers a number of services with the mocked module.
+	 *
+	 * @param {string} moduleName The name of the module to mock.
+	 * @param {array} services An array of objects representing fake services to register
+	 * with the module. Each object must have a name property representing the
+	 * name of the service and a provider property which is the body of the
+	 * service, i.e. an object that has the functions and properties of the service.
+	 *
+	 * @example
+	 *
+	 &lt;pre>
+	   // Mock MyModule and provide the passed fake services to it.
+	   window.mockModule('MyModule', [{
+	       name: 'MyFakeServiceName', =
+	       provider: {
+	         get: function() {},
+	         name: 'ServiceName'
+	       }
+	   }]);
+	 &lt;/pre>
+	 */
+	EasyTest.mockModule = function mockModule(moduleName, services) {
+		services = services || [];
+		angular.mock.module(moduleName, function($provide) {
+			services.forEach(function (service) {
+				$provide.factory(service.name, [ function () {
+					return service.provider;
+				}]);
+			});
+		});
+	};
+
+	/**
+	 * @memberof EasyTest
+	 * @description
+	 *
+	 * Creates a 'test context' for a particular controller. Note that currently
+	 * you need to mock any modules that this controller may need beforehand.
+	 * See the mockModule function above.
+	 *
+	 * @param {string} controller The name of the controller to load and create a context for.
+	 *
+	 * @returns {object} An object with a $scope and controller property representing the
+	 * controller that has been loaded and its scope.
+	 *
+	 * @example
+	 *
+	 &lt;pre>
+	   var context = window.createTextContext('MyControllerName');
+	   expect(context.$scope).to.have.property('MyExpectedProperty');
+	   expect(context.controller.myFunc).to.be.a('function');
+	 &lt;/pre>
+	 */
+	EasyTest.createTestContext = function createTestContext(controller) {
+		var testContext = {};
+		inject(function($rootScope, $controller) {
+			var $scope = $rootScope.$new();
+			testContext = {
+				$scope: $scope,
+				controller: $controller(controller, {
+					$scope: $scope
+				})
+			};
+		});
+		return testContext;
+	};
+
+	/**
+	 * @memberof EasyTest
+	 * @description
+	 *
+	 * Compiles a directive and returns the top level element in the compiled
+	 * directives HTML. Note that currently you need to mock any modules that
+	 * this directive may need beforehand. See the mockModule function above.
+	 *
+	 * @param {string} directiveHTML The HTML of the directive to be compiled, for example,
+	 * &lt;div my-directive directive-var="1">My transcluded data here, possibly&lt;/div>
+	 *
+	 * @returns {HTMLElement} The top level HTML element of the compiled directive.
+	 *
+	 * @example
+	 *
+	 &lt;pre>
+	   var element = window.compileDirective('&lt;div em-my-directive>{{ item }}&lt;/div>');
+	   expect(element.length).to.equal(expectedLength);
+	 &lt;/pre>
+	 */
+	EasyTest.compileDirective = function compileDirective(directiveHTML) {
+		var $el;
+		inject(function($compile, $rootScope) {
+			var $scope = $rootScope.$new();
+			$el = angular.element(directiveHTML);
+			$compile($el)($scope);
+			$scope.$digest();
+		});
+		return $el;
+	};
+
+	/**
+	 * @memberof EasyTest
+	 * @description
+	 *
+	 * Creates a test context for a controller and then tests its scope via
+	 * reading the passed scope spec.
+	 *
+	 * @param {string|object} context The name of the controller to create a test
+	 * context for or the context itself.
+	 * @param {array} scopeSpec The scope's spec. An object with the names of the
+	 * expected types as its keys and a string for its value of all the properties,
+	 * separated by spaces, that are that type i.e. { 'function': 'prop1 prop2', 'array': 'prop3' }
+	 *
+	 * @example
+	 *
+	 &lt;pre>
+	   // Will load the controller and test it using the passed spec.
+	   window.testScope('MyControllerName', {
+	     'function': [ 'funcOne', 'funcTwo', 'funcThree' ],
+	     'number': [ 'numberOne', 'numberTwo' ],
+	     'boolean': [ 'hasStuff' ];
+	   });
+	 &lt;/pre>
+	 */
+	EasyTest.testScope = function testScope(context, scopeSpec) {
+		if (typeof context === 'string') {
+			context = EasyTest.createTestContext(context);
+		}
+		Object.getOwnPropertyNames(scopeSpec).forEach(function(type) {
+			scopeSpec[type].split(' ').forEach(function(prop) {
+				expect(context.$scope).to.have.property(prop);
+				expect(context.$scope[prop]).to.be.an(type);
+			});
+		});
+	};
+
+	window.EasyTest = EasyTest;
+
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="EasyTest.html">EasyTest</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 05 2014 14:01:45 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
