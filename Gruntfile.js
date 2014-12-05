@@ -44,6 +44,14 @@ module.exports = function(grunt) {
         gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
         globalReplace: false
       }
+    },
+    jsdoc: {
+      dist: {
+        src: [ 'lib/easy-test.js', 'README.md' ],
+        options: {
+          destination: 'docs'
+        }
+      }
     }
   });
   
