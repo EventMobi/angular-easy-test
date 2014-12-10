@@ -28,3 +28,19 @@ app.directive('TestDirective', [ function() {
     controller: 'TestController',
   };
 }]);
+
+var simpleapp2 = angular.module('simpleapp2', []);
+
+simpleapp2.factory('TestService2', function() {
+  return {
+    testPropHere: 1
+  };
+});
+
+var simpleapp3 = angular.module('simpleapp3', []);
+
+simpleapp3.factory('TestService3', function() {
+  return {
+    anotherPropHere: 1
+  };
+});

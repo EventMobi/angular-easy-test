@@ -41,6 +41,43 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#mockModules', function() {
+
+    it('should mock multiple modules from one string', function() {
+      EasyTest.mockModules('simpleapp2 simpleapp3');
+      inject(function(TestService2, TestService3) {
+        expect(TestService2).to.have.property('testPropHere');
+        expect(TestService3).to.have.property('anotherPropHere');
+      });
+    });
+
+    it('should mock multiple modules from one or more strings', function() {
+      EasyTest.mockModules('simpleapp2', 'simpleapp3');
+      inject(function(TestService2, TestService3) {
+        expect(TestService2).to.have.property('testPropHere');
+        expect(TestService3).to.have.property('anotherPropHere');
+      });
+    });
+
+    it('should provide fake values as well', function () {
+      EasyTest.mockModules('simpleapp2', {
+        name: 'simpleapp3',
+        values: [{
+          name: 'TestService3',
+          provider: {
+            fakePropHere: 1
+          }
+        }]
+      });
+      inject(function(TestService2, TestService3) {
+        expect(TestService2).to.have.property('testPropHere');
+        expect(TestService3).to.not.have.property('anotherPropHere');
+        expect(TestService3).to.have.property('fakePropHere');
+      });
+    });
+
+  });
+
   describe('#injectify', function() {
 
     it('should injectify things properly', function() {
