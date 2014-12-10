@@ -106,4 +106,15 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#getService', function() {
+
+    it('should return a service correctly', function() {
+      var my$q = EasyTest.getService('$q');
+      inject(function($q) {
+        expect(my$q).to.equal($q);
+      });
+    });
+
+  });
+
 });
