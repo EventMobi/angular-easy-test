@@ -50,11 +50,8 @@
    * were injected.
    *
    * @example
-   *
-   &lt;pre>
-     var services = EasyTest.injectify(['MyServiceOne', 'MyServiceTwo']);
-     expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);
-   &lt;/pre>
+   * var services = EasyTest.injectify(['MyServiceOne', 'MyServiceTwo']);
+   * expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);
    */
   EasyTest.injectify = function injectify(injectibles) {
     var obj = [];
@@ -81,17 +78,14 @@
    * service, i.e. an object that has the functions and properties of the service.
    *
    * @example
-   *
-   &lt;pre>
-     // Mock MyModule and provide the passed fake services to it.
-     EasyTest.mockModule('MyModule', [{
-       name: 'MyFakeServiceName', =
-       provider: {
-         get: function() {},
-         name: 'ServiceName'
-       }
-     }]);
-   &lt;/pre>
+   * // Mock MyModule and provide the passed fake services to it.
+   * EasyTest.mockModule('MyModule', [{
+   *   name: 'MyFakeServiceName', =
+   *   provider: {
+   *     get: function() {},
+   *     name: 'ServiceName'
+   *   }
+   * }]);
    */
   EasyTest.mockModule = function mockModule(moduleName, services) {
     services = services || [];
@@ -108,6 +102,62 @@
    * @memberof EasyTest
    * @description
    *
+   * Mocks a series of modules. The arguments that are passed into this function
+   * can be passed in a very flexible manner. String arguments will be split
+   * on their spaces and mocked directly, object arguments will be expected to
+   * have a `name` property and `values` property which is an array of the
+   * values to be provided for the module. See the {@link EasyTest.mockModule}
+   * function for more information on how that works.
+   *
+   * @param {string|object} arguments A series of string or object parameters.
+   *
+   * @example
+   * // Simply mock three modules
+   * EasyTest.mockModules('one two three');
+   * // or
+   * EasyTest.mockModules('one two', 'three');
+   * // etc, can mix and match.
+   *
+   * @example
+   * // Mock two simple modules and a third with a fake service.
+   * EasyTest.mockModules('one two', { name: 'three', values: [{
+   *   name: 'FakeService',
+   *   provider: { get: function() {} }
+   * }]});
+   */
+  EasyTest.mockModules = function mockModules() {
+    var modules =  Array.prototype.slice.call(arguments, 0);
+    modules.forEach(function(arg) {
+      if (typeof arg === 'string') {
+        return arg.split(' ').forEach(function(moduleName) {
+          angular.mock.module(moduleName); // Go directly to angular.mock
+        });
+      }
+      EasyTest.mockModule(arg.name, arg.values);
+    });
+  };
+
+  /**
+   * @memberof EasyTest
+   * @description
+   *
+   * Injects a specific service and returns a reference to it.
+   *
+   * @param {string} serviceName The name of the service to inject.
+   *
+   * @returns {object} The service that was injected.
+   *
+   * @example
+   * var $q = EasyTest.getService('$q');
+   */
+  EasyTest.getService = function getService(serviceName) {
+    return EasyTest.injectify([ serviceName ])[serviceName];
+  };
+
+  /**
+   * @memberof EasyTest
+   * @description
+   *
    * Creates a 'test context' for a particular controller. Note that currently
    * you need to mock any modules that this controller may need beforehand.
    * See the {@link EasyTest.mockModule} function.
@@ -118,12 +168,9 @@
    * controller that has been loaded and its scope.
    *
    * @example
-   *
-   &lt;pre>
-     var context = EasyTest.createTextContext('MyControllerName');
-     expect(context.$scope).to.have.property('MyExpectedProperty');
-     expect(context.controller.myFunc).to.be.a('function');
-   &lt;/pre>
+   * var context = EasyTest.createTextContext('MyControllerName');
+   * expect(context.$scope).to.have.property('MyExpectedProperty');
+   * expect(context.controller.myFunc).to.be.a('function');
    */
   EasyTest.createTestContext = function createTestContext(controller) {
     var testContext = {};
@@ -140,6 +187,23 @@
   };
 
   /**
+  * @memberof EasyTest
+  * @description
+  *
+  * Gets a specific controller and returns a reference to it.
+  *
+  * @param {string} controllerName The name of the controller to get.
+  *
+  * @returns {object} The controller that was retreived.
+  *
+  * @example
+  * var myController = EasyTest.getController('myController');
+  */
+  EasyTest.getController = function getController(controllerName) {
+    return EasyTest.createTestContext(controllerName).controller;
+  };
+
+  /**
    * @memberof EasyTest
    * @description
    *
@@ -152,11 +216,8 @@
    * @returns {HTMLElement} The top level HTML element of the compiled directive.
    *
    * @example
-   *
-   &lt;pre>
-     var element = EasyTest.compileDirective('&lt;p directive&gt;&lt;/p&gt;');
-     expect(element.length).to.equal(expectedLength);
-   &lt;/pre>
+   * var element = EasyTest.compileDirective('&lt;p directive&gt;&lt;/p&gt;');
+   * expect(element.length).to.equal(expectedLength);
    */
   EasyTest.compileDirective = function compileDirective(directiveHTML) {
     var $el;
@@ -184,15 +245,12 @@
    * separated by spaces.
    *
    * @example
-   *
-   &lt;pre>
-     // Will load the controller and test it using the passed spec.
-     EasyTest.testScope('MyControllerName', {
-       'function': 'funcOne funcTwo funcThree',
-       'number': 'numberOne numberTwo',
-       'boolean': 'hasStuff'
-     });
-   &lt;/pre>
+   * // Will load the controller and test it using the passed spec.
+   * EasyTest.testScope('MyControllerName', {
+   *   'function': 'funcOne funcTwo funcThree',
+   *   'number': 'numberOne numberTwo',
+   *   'boolean': 'hasStuff'
+   * });
    */
   EasyTest.testScope = function testScope(context, scopeSpec) {
     if (typeof context === 'string') {
@@ -225,7 +283,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Mon Dec 08 2014 13:42:39 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Dec 09 2014 22:32:11 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

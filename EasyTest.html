@@ -213,7 +213,7 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line134">line 134</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line195">line 195</a>
     </li></ul></dd>
     
     
@@ -260,10 +260,8 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   <pre>
-     var element = EasyTest.compileDirective('&lt;p directive&gt;&lt;/p&gt;');
-     expect(element.length).to.equal(expectedLength);
-   </pre></code></pre>
+    <pre class="prettyprint"><code>var element = EasyTest.compileDirective('&lt;p directive&gt;&lt;/p&gt;');
+expect(element.length).to.equal(expectedLength);</code></pre>
 
     
 </dd>
@@ -362,7 +360,7 @@ See the <a href="EasyTest.html#mockModule">EasyTest.mockModule</a> function.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line101">line 101</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line148">line 148</a>
     </li></ul></dd>
     
     
@@ -410,11 +408,297 @@ controller that has been loaded and its scope.
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   <pre>
-     var context = EasyTest.createTextContext('MyControllerName');
-     expect(context.$scope).to.have.property('MyExpectedProperty');
-     expect(context.controller.myFunc).to.be.a('function');
-   </pre></code></pre>
+    <pre class="prettyprint"><code>var context = EasyTest.createTextContext('MyControllerName');
+expect(context.$scope).to.have.property('MyExpectedProperty');
+expect(context.controller.myFunc).to.be.a('function');</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getController"><span class="type-signature">&lt;static> </span>getController<span class="signature">(controllerName)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets a specific controller and returns a reference to it.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>controllerName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the controller to get.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The controller that was retreived.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var myController = EasyTest.getController('myController');</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getService"><span class="type-signature">&lt;static> </span>getService<span class="signature">(serviceName)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Injects a specific service and returns a reference to it.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the service to inject.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The service that was injected.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var $q = EasyTest.getService('$q');</code></pre>
 
     
 </dd>
@@ -560,10 +844,8 @@ were injected.
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   <pre>
-     var services = EasyTest.injectify(['MyServiceOne', 'MyServiceTwo']);
-     expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);
-   </pre></code></pre>
+    <pre class="prettyprint"><code>var services = EasyTest.injectify(['MyServiceOne', 'MyServiceTwo']);
+expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);</code></pre>
 
     
 </dd>
@@ -687,7 +969,7 @@ service, i.e. an object that has the functions and properties of the service.</t
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line69">line 69</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line63">line 63</a>
     </li></ul></dd>
     
     
@@ -712,16 +994,154 @@ service, i.e. an object that has the functions and properties of the service.</t
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   <pre>
-     // Mock MyModule and provide the passed fake services to it.
-     EasyTest.mockModule('MyModule', [{
-       name: 'MyFakeServiceName', =
-       provider: {
-         get: function() {},
-         name: 'ServiceName'
-       }
-     }]);
-   </pre></code></pre>
+    <pre class="prettyprint"><code>// Mock MyModule and provide the passed fake services to it.
+EasyTest.mockModule('MyModule', [{
+  name: 'MyFakeServiceName', =
+  provider: {
+    get: function() {},
+    name: 'ServiceName'
+  }
+}]);</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="mockModules"><span class="type-signature">&lt;static> </span>mockModules<span class="signature">(arguments)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Mocks a series of modules. The arguments that are passed into this function
+can be passed in a very flexible manner. String arguments will be split
+on their spaces and mocked directly, object arguments will be expected to
+have a `name` property and `values` property which is an array of the
+values to be provided for the module. See the <a href="EasyTest.html#mockModule">EasyTest.mockModule</a>
+function for more information on how that works.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>arguments</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A series of string or object parameters.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>// Simply mock three modules
+EasyTest.mockModules('one two three');
+// or
+EasyTest.mockModules('one two', 'three');
+// etc, can mix and match.</code></pre>
+
+    <pre class="prettyprint"><code>// Mock two simple modules and a third with a fake service.
+EasyTest.mockModules('one two', { name: 'three', values: [{
+  name: 'FakeService',
+  provider: { get: function() {} }
+}]});</code></pre>
 
     
 </dd>
@@ -849,7 +1269,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line170">line 170</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line228">line 228</a>
     </li></ul></dd>
     
     
@@ -874,14 +1294,12 @@ separated by spaces.</td>
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>   <pre>
-     // Will load the controller and test it using the passed spec.
-     EasyTest.testScope('MyControllerName', {
-       'function': 'funcOne funcTwo funcThree',
-       'number': 'numberOne numberTwo',
-       'boolean': 'hasStuff'
-     });
-   </pre></code></pre>
+    <pre class="prettyprint"><code>// Will load the controller and test it using the passed spec.
+EasyTest.testScope('MyControllerName', {
+  'function': 'funcOne funcTwo funcThree',
+  'number': 'numberOne numberTwo',
+  'boolean': 'hasStuff'
+});</code></pre>
 
     
 </dd>
@@ -908,7 +1326,7 @@ separated by spaces.</td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Mon Dec 08 2014 13:42:39 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Dec 09 2014 22:32:11 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
