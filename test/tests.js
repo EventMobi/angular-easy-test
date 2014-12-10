@@ -117,4 +117,13 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#getController', function() {
+
+    it('should return a controller correctly', function() {
+      var controller = EasyTest.getController('TestController');
+      expect(controller).to.itself.respondTo('testFunction');
+    });
+
+  });
+
 });
