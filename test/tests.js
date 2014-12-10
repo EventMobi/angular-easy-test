@@ -15,7 +15,8 @@ describe('angular-easy-test', function() {
 
     it('should look like an EasyTest', function() {
       ('mockModule injectify createTestContext testScope ' +
-       'compileDirective').split(' ').forEach(function(prop) {
+       'compileDirective getService getController ' +
+       'mockModules').split(' ').forEach(function(prop) {
          expect(EasyTest).to.itself.respondTo(prop);
        });
     });
