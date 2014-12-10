@@ -11,6 +11,17 @@ describe('angular-easy-test', function() {
     EasyTest.mockModule('simpleapp');
   });
 
+  describe('EasyTest', function () {
+
+    it('should look like an EasyTest', function() {
+      ('mockModule injectify createTestContext testScope ' +
+       'compileDirective').split(' ').forEach(function(prop) {
+         expect(EasyTest).to.itself.respondTo(prop);
+       });
+    });
+
+  });
+
   describe('#mockModule', function() {
 
     it('should mock correct module', function() {
