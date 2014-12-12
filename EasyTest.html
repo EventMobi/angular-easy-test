@@ -861,8 +861,7 @@ expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);</code></pre>
     
     
     <div class="description">
-        Tests an object to ensure that it contains expected properties that have
-an expected type.
+        Tests an object against a JSON specification object.
     </div>
     
 
@@ -968,7 +967,7 @@ that type as their value, separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line230">line 230</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line229">line 229</a>
     </li></ul></dd>
     
     
@@ -1326,6 +1325,163 @@ EasyTest.mockModules('one two', { name: 'three', values: [{
         
             
 <dt>
+    <h4 class="name" id="testController"><span class="type-signature">&lt;static> </span>testController<span class="signature">(controller, spec)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Tests a controller to see if it conforms to a JSON specification object.
+See <a href="EasyTest.html#looksLike">EasyTest.looksLike</a> for more information.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>controller</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the controller to create or a
+reference to a controller.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>spec</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The controller's spec. An object with the names of the
+expected types as its keys and a string for its value of all the properties,
+separated by spaces.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line297">line 297</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>// Will load the controller and test it using the passed spec.
+EasyTest.testController('MyControllerName', {
+  'function': 'funcOne funcTwo funcThree',
+  'number': 'numberOne numberTwo',
+  'boolean': 'hasStuff'
+});</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="testScope"><span class="type-signature">&lt;static> </span>testScope<span class="signature">(context, scopeSpec)</span><span class="type-signature"></span></h4>
     
     
@@ -1334,9 +1490,8 @@ EasyTest.mockModules('one two', { name: 'three', values: [{
     
     
     <div class="description">
-        Creates a test context for a controller and then tests its scope via
-reading the passed scope spec. See <a href="EasyTest.html#looksLike">EasyTest.looksLike</a> for more
-information.
+        Tests a controller's scope by seeing if it conforms to a JSON specficiation
+object. See <a href="EasyTest.html#looksLike">EasyTest.looksLike</a> for more information.
     </div>
     
 
@@ -1446,7 +1601,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line271">line 271</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line269">line 269</a>
     </li></ul></dd>
     
     
@@ -1481,6 +1636,163 @@ EasyTest.testScope('MyControllerName', {
     
 </dd>
 
+        
+            
+<dt>
+    <h4 class="name" id="testService"><span class="type-signature">&lt;static> </span>testService<span class="signature">(service, spec)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Tests a service to see if it conforms to a JSON specification object.
+See <a href="EasyTest.html#looksLike">EasyTest.looksLike</a> for more information.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>service</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the service to create or a
+reference to a service.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>spec</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The service's spec. An object with the names of the
+expected types as its keys and a string for its value of all the properties,
+separated by spaces.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line325">line 325</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>// Will load the service and test it using the passed spec.
+EasyTest.testService('MyServiceName', {
+  'function': 'funcOne funcTwo funcThree',
+  'number': 'numberOne numberTwo',
+  'boolean': 'hasStuff'
+});</code></pre>
+
+    
+</dd>
+
         </dl>
     
     
@@ -1503,7 +1815,7 @@ EasyTest.testScope('MyControllerName', {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 14:07:22 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 14:56:31 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
