@@ -178,6 +178,50 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#testController', function() {
+
+    it('should work passing in a controller\'s name', function(done) {
+      var res = EasyTest.testController('TestController', {
+        'function': 'testFunction'
+      });
+      done(res);
+    });
+
+    it('should work passing in a controller', function(done) {
+      var controller = EasyTest.getController('TestController');
+      var res = EasyTest.testController(controller, {
+        'function': 'testFunction',
+      });
+      done(res);
+    });
+
+  });
+
+  describe('#testService', function() {
+
+    it('should work passing in a service\'s name', function(done) {
+      var res = EasyTest.testService('TestService1', {
+        'function': 'one',
+        'string': 'two',
+        'boolean': 'test',
+        'object': 'something'
+      });
+      done(res);
+    });
+
+    it('should work passing in a service', function(done) {
+      var service = EasyTest.getService('TestService1');
+      var res = EasyTest.testService(service, {
+        'function': 'one',
+        'string': 'two',
+        'boolean': 'test',
+        'object': 'something'
+      });
+      done(res);
+    });
+
+  });
+
   describe('#compileDirective', function() {
 
     it.skip('should compile directive correctly', function() {
