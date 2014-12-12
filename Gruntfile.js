@@ -21,13 +21,13 @@ module.exports = function(grunt) {
       },
       unit: {
         browsers: [ 'Chrome' ],
-        reporters: [ 'progress' ]
+        reporters: [ 'progress', 'coverage', 'threshold' ]
       },
       debug: {
         singleRun: false,
         autoWatch: true,
         browsers: [ 'Chrome' ],
-        reporters: [ 'progress' ]
+        reporters: [ 'progress', 'coverage', 'threshold' ]
       }
     },
     bump: {

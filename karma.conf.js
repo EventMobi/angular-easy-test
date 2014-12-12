@@ -9,7 +9,13 @@ module.exports = function(karma) {
       'test/app.js',
       'test/tests.js'
     ],
-    reporters: [ 'progress' ],
+    reporters: [ 'progress', 'coverage', 'threshold' ],
+    thresholdReporter: {
+      statements: 30,
+      branches: 20,
+      functions: 20,
+      lines: 30
+    },
     port: 9877,
     background : false,
     singleRun : true,
@@ -22,7 +28,21 @@ module.exports = function(karma) {
     plugins: [
       'karma-chai',
       'karma-mocha',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-threshold-reporter'
     ],
+    preprocessors: {
+      'lib/**/*.js': 'coverage'
+    },
+    coverageReporter: {
+      reporters: [{
+        type: 'html',
+        dir: 'coverage/'
+      }, {
+        type: 'cobertura',
+        dir: 'coverage/'
+      }]
+    }
   });
 }
