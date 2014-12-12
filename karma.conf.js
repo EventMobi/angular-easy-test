@@ -11,10 +11,10 @@ module.exports = function(karma) {
     ],
     reporters: [ 'progress', 'coverage', 'threshold' ],
     thresholdReporter: {
-      statements: 30,
-      branches: 20,
-      functions: 20,
-      lines: 30
+      statements: 80,
+      branches: 100,
+      functions: 85,
+      lines: 89
     },
     port: 9877,
     background : false,
