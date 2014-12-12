@@ -13,12 +13,6 @@ A framework that makes Angular Unit Test's easier to write.
 Just include `node_modules/lib/easy-test.js` into your test files. Make sure it
 comes after you've included `angular.js`.
 
-# dependencies
-
-Some parts of the library currently need [Chai Expect](http://chaijs.com/api/bdd/)
-to be defined as they run tests automatically. See [EasyTest.testScope](http://eventmobi.github.io/angular-easy-test/EasyTest.html#testScope)
-for an example of this.
-
 # documentation
 
 See the [jsdocs](http://eventmobi.github.io/angular-easy-test).
