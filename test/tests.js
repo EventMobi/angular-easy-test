@@ -113,25 +113,67 @@ describe('angular-easy-test', function() {
 
   });
 
-  describe('#testScope', function() {
+  describe('#looksLike', function() {
 
-    it('test scope should work passing in a test context', function() {
+    it('should not return error if spec matches', function(done) {
       var context = EasyTest.createTestContext('TestController');
-      EasyTest.testScope(context, {
+      var res = EasyTest.looksLike(context.$scope, {
         'function': 'one',
         'string': 'two',
         'boolean': 'test',
         'object': 'something somethingElse'
       });
+      done(res);
     });
 
-    it('test scope should work passing in a controller\'s name', function() {
-      EasyTest.testScope('TestController', {
+    it('should return error if a property expected is not there', function() {
+      var context = EasyTest.createTestContext('TestController');
+      var res = EasyTest.looksLike(context.$scope, {
+        'function': 'one four',
+        'string': 'two',
+        'boolean': 'test',
+        'object': 'something somethingElse'
+      });
+      expect(res).to.be.an.instanceOf(Error);
+      expect(res.message).to.equal('Expected object to have the property \'' +
+                                   'four\'.');
+    });
+
+    it('should return error if a property is not expected type', function() {
+      var context = EasyTest.createTestContext('TestController');
+      var res = EasyTest.looksLike(context.$scope, {
+        'boolean': 'one',
+        'string': 'two',
+        'object': 'something somethingElse'
+      });
+      expect(res).to.be.an.instanceOf(Error);
+      expect(res.message).to.equal('Expected property \'one\' to be of type ' +
+                                   'boolean.');
+    });
+
+  });
+
+  describe('#testScope', function() {
+
+    it('should work passing in a controller\'s name', function(done) {
+      var res = EasyTest.testScope('TestController', {
         'function': 'one',
         'string': 'two',
         'boolean': 'test',
         'object': 'something somethingElse'
       });
+      done(res);
+    });
+
+    it('should work passing in a test context', function(done) {
+      var context = EasyTest.createTestContext('TestController');
+      var res = EasyTest.testScope(context, {
+        'function': 'one',
+        'string': 'two',
+        'boolean': 'test',
+        'object': 'something somethingElse'
+      });
+      done(res);
     });
 
   });
