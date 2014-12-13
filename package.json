@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Framework for making Angular Unit Test's easier to write.",
   "main": "lib/easy-test.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eventmobi/angular-easy-test.git"
+  },
+  "bugs": "https://github.com/eventmobi/angular-easy-test/issues",
   "keywords": [
     "angular",
     "testing",
