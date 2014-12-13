@@ -1,6 +1,6 @@
 {
   "name": "angular-easy-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Framework for making Angular Unit Test's easier to write.",
   "main": "lib/easy-test.js",
   "repository": {
