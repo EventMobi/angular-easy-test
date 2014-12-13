@@ -1,6 +1,6 @@
 # angular-easy-test
 
-[![Circle CI](https://circleci.com/gh/EventMobi/angular-easy-test.svg?style=svg)](https://circleci.com/gh/EventMobi/angular-easy-test) [![Dependency Status](https://david-dm.org/EventMobi/angular-easy-test/dev-status.svg?theme=shields.io)](https://david-dm.org/EventMobi/angular-easy-test#info=devDependencies)
+[![Circle CI](https://circleci.com/gh/EventMobi/angular-easy-test.svg?style=svg)](https://circleci.com/gh/EventMobi/angular-easy-test) [![Dependency Status](https://david-dm.org/EventMobi/angular-easy-test/dev-status.svg?theme=shields.io)](https://david-dm.org/EventMobi/angular-easy-test#info=devDependencies) [![npm-version](http://img.shields.io/npm/v/angular-easy-test.svg)](https://www.npmjs.com/package/angular-easy-test)
 
 A framework that makes Angular Unit Test's easier to write.
 
