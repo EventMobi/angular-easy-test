@@ -22,12 +22,12 @@ app.controller('TestController', function($scope, TestService1) {
   this.testFunction = function() {};
 });
 
-app.directive('TestDirective', [ function() {
+app.directive('testDirective', function() {
   return {
     template: '<div><p>Testa</p></div>',
-    controller: 'TestController',
+    controller: 'TestController'
   };
-}]);
+});
 
 var simpleapp2 = angular.module('simpleapp2', []);
 
