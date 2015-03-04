@@ -224,8 +224,16 @@ describe('angular-easy-test', function() {
 
   describe('#compileDirective', function() {
 
-    it.skip('should compile directive correctly', function() {
+    it('should compile directive correctly', function() {
       var element = EasyTest.compileDirective('<div test-directive></div>');
+      expect(element.text()).to.equal('Testa');
+    });
+
+    it('should compile directive correctly', function() {
+      var element = EasyTest.compileDirective('<b>{{something}}</b>', {
+        something: 6
+      });
+      expect(element.text()).to.equal('6');
     });
 
   });
