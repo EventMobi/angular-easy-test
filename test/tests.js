@@ -238,6 +238,33 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#hasAttr', function() {
+    it('should check element for attribute exists', function() {
+      var element = EasyTest.compileDirective('<div foo></div>');
+      expect(EasyTest.hasAttr(element[0], 'foo')).to.equal(true);
+    });
+
+    it('should check element for attribute not exist', function() {
+      var element = EasyTest.compileDirective('<div></div>');
+      expect(EasyTest.hasAttr(element[0], 'foo')).to.equal(false);
+    });
+
+    it('should check element for attribute value', function() {
+      var element = EasyTest.compileDirective('<div pi="3.14159"></div>');
+      expect(EasyTest.hasAttr(element[0], 'pi', '3.14159')).to.equal(true);
+    });
+
+    it('should check element for attribute value not equal', function() {
+      var element = EasyTest.compileDirective('<div pi="3.14159"></div>');
+      expect(EasyTest.hasAttr(element[0], 'pi', '2.71828')).to.equal(false);
+    });
+
+    it('should work with Angular/jQuery element', function() {
+      var element = EasyTest.compileDirective('<div thing="stuff"></div>');
+      expect(EasyTest.hasAttr(element, 'thing', 'stuff')).to.equal(true);
+    });
+  });
+
   describe('#getService', function() {
 
     it('should return a service correctly', function() {
