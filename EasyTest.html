@@ -122,7 +122,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="compileDirective"><span class="type-signature">&lt;static> </span>compileDirective<span class="signature">(directiveHTML)</span><span class="type-signature"> &rarr; {HTMLElement}</span></h4>
+    <h4 class="name" id="compileDirective"><span class="type-signature">&lt;static> </span>compileDirective<span class="signature">(directiveHTML, scope)</span><span class="type-signature"> &rarr; {HTMLElement}</span></h4>
     
     
 </dt>
@@ -186,6 +186,29 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">a dictionary of variables that will be inserted into the element's scope.</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -213,7 +236,7 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line195">line 195</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line201">line 201</a>
     </li></ul></dd>
     
     
@@ -258,10 +281,14 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
         
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="prettyprint"><code>var element = EasyTest.compileDirective('&lt;p directive&gt;&lt;/p&gt;');
 expect(element.length).to.equal(expectedLength);</code></pre>
+
+    <pre class="prettyprint"><code>var scope = { a: 1, b: 'something' };
+var element = EasyTest.compileDirective('&lt;p&gt;{{a}} {{b}}&lt;/p&gt;', scope);
+expect(element.text()).to.equal('1 something');</code></pre>
 
     
 </dd>
@@ -706,6 +733,204 @@ expect(context.controller.myFunc).to.be.a('function');</code></pre>
         
             
 <dt>
+    <h4 class="name" id="hasAttr"><span class="type-signature">&lt;static> </span>hasAttr<span class="signature">(element, attr, val)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Tests an HTMLElement or Angular/jQuery element to see if it contains
+some attribute, optionally with some given value.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+|
+
+<span class="param-type">angular.element</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the element to be tested.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>attr</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the name of the attribute being tested.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">optional: the value of the attribute being tested.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line237">line 237</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Whether the element contains the attribute `attr`.
+If `val` is provided, returns true if and only if the value of `attr` is
+also `val`.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">boolean</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var element = EasyTest.compileDirective('&lt;p foo="bar"&gt;&lt;/p&gt;');
+expect(EasyTest.hasAttr(element[0], 'foo')).to.be.true;
+expect(EasyTest.hasAttr(element[0], 'foo', 'bar')).to.be.true;</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="injectify"><span class="type-signature">&lt;static> </span>injectify<span class="signature">(injectibles)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
     
@@ -967,7 +1192,7 @@ that type as their value, separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line229">line 229</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line274">line 274</a>
     </li></ul></dd>
     
     
@@ -1444,7 +1669,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line297">line 297</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line342">line 342</a>
     </li></ul></dd>
     
     
@@ -1601,7 +1826,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line269">line 269</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line314">line 314</a>
     </li></ul></dd>
     
     
@@ -1758,7 +1983,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line325">line 325</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line370">line 370</a>
     </li></ul></dd>
     
     
@@ -1815,7 +2040,7 @@ EasyTest.testService('MyServiceName', {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Sat Dec 13 2014 17:25:44 GMT-0500 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Mon Mar 09 2015 05:35:35 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
