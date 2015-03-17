@@ -236,7 +236,7 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line201">line 201</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line276">line 276</a>
     </li></ul></dd>
     
     
@@ -387,7 +387,7 @@ See the <a href="EasyTest.html#mockModule">EasyTest.mockModule</a> function.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line148">line 148</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line183">line 183</a>
     </li></ul></dd>
     
     
@@ -438,6 +438,177 @@ controller that has been loaded and its scope.
     <pre class="prettyprint"><code>var context = EasyTest.createTextContext('MyControllerName');
 expect(context.$scope).to.have.property('MyExpectedProperty');
 expect(context.controller.myFunc).to.be.a('function');</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getBoundController"><span class="type-signature">&lt;static> </span>getBoundController<span class="signature">(controllerName, scope)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets a specific controller and returns a reference to it. Use this
+instead of `getController` if the controller belongs to a directive
+that has `bindToController` set to true.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>controllerName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the controller to get.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">a object that will be inserted into the controller's 
+scope.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line233">line 233</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The controller that was retreived.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var scope = { value: 'some value' };
+var myController = EasyTest.getBoundController('myController', scope);</code></pre>
 
     
 </dd>
@@ -536,7 +707,7 @@ HTML.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line227">line 227</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line302">line 302</a>
     </li></ul></dd>
     
     
@@ -675,7 +846,7 @@ HTML.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line175">line 175</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line210">line 210</a>
     </li></ul></dd>
     
     
@@ -819,7 +990,7 @@ HTML.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line126">line 126</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line161">line 161</a>
     </li></ul></dd>
     
     
@@ -1013,7 +1184,7 @@ some attribute, optionally with some given value.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line251">line 251</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line326">line 326</a>
     </li></ul></dd>
     
     
@@ -1333,7 +1504,7 @@ that type as their value, separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line288">line 288</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line363">line 363</a>
     </li></ul></dd>
     
     
@@ -1468,6 +1639,9 @@ Optionally registers a number of services with the mocked module.
             
                 
 <span class="param-type">array</span>
+|
+
+<span class="param-type">object</span>
 
 
             
@@ -1477,10 +1651,11 @@ Optionally registers a number of services with the mocked module.
             
             
             
-            <td class="description last">An array of objects representing fake services to register
-with the module. Each object must have a name property representing the
-name of the service and a provider property which is the body of the
-service, i.e. an object that has the functions and properties of the service.</td>
+            <td class="description last">An array of objects representing fake 
+services to register with the module. Each object must have a `name` property
+representing the name of the service, and then one of `provider`, `constant`,
+`value`, `factory`, or `service`. Alternately, you can supply an object matching
+names to factories.</td>
         </tr>
 	
 	
@@ -1511,7 +1686,7 @@ service, i.e. an object that has the functions and properties of the service.</t
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line63">line 63</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line75">line 75</a>
     </li></ul></dd>
     
     
@@ -1534,16 +1709,26 @@ service, i.e. an object that has the functions and properties of the service.</t
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="prettyprint"><code>// Mock MyModule and provide the passed fake services to it.
 EasyTest.mockModule('MyModule', [{
-  name: 'MyFakeServiceName', =
-  provider: {
+  name: 'MyFakeServiceName',
+  factory: {
     get: function() {},
     name: 'ServiceName'
   }
+}, 
+{
+  name: 'MyFakeConstant',
+  constant: 1337
 }]);</code></pre>
+
+    <pre class="prettyprint"><code>// Mock MyModule and provide the passed fake services to it.
+EasyTest.mockModule('MyOtherModule', {
+  FooFactory: { foo: function() {} },
+  BarFactory: { bar: function() {} }
+});</code></pre>
 
     
 </dd>
@@ -1648,7 +1833,7 @@ function for more information on how that works.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line101">line 101</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line136">line 136</a>
     </li></ul></dd>
     
     
@@ -1810,7 +1995,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line356">line 356</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line431">line 431</a>
     </li></ul></dd>
     
     
@@ -1967,7 +2152,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line328">line 328</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line403">line 403</a>
     </li></ul></dd>
     
     
@@ -2124,7 +2309,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line384">line 384</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line459">line 459</a>
     </li></ul></dd>
     
     
@@ -2181,7 +2366,7 @@ EasyTest.testService('MyServiceName', {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Mar 17 2015 10:52:20 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Mar 17 2015 16:21:46 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
