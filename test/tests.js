@@ -349,4 +349,21 @@ describe('angular-easy-test', function() {
 
   });
 
+  describe('#getBoundController', function() {
+
+    it('should return a controller correctly', function() {
+      var controller = EasyTest.getBoundController('TestBoundController');
+      expect(controller.two).to.equal('two');
+    });
+
+    it('should return a with an extended scope controller correctly', function() {
+      var controller = EasyTest.getBoundController('TestBoundController', {
+        value: 'some value'
+      });
+      expect(controller.two).to.equal('two');
+      expect(controller.value).to.equal('some value');
+    });
+
+  });
+
 });
