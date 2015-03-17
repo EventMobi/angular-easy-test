@@ -30,16 +30,80 @@ describe('angular-easy-test', function() {
       inject(function(TestService1) {});
     });
 
-    it('should be able to provide fake services', function() {
+    it('should be able to mock provider', function() {
+      EasyTest.mockModule('simpleapp4', [{
+        name: '$baz',
+        provider: function() {
+          this.$get = function $get() {
+            return 4;
+          };
+        }
+      }]);
+
+      inject(function($controller, $rootScope, $baz) {
+        var scope = $rootScope.$new();
+        $controller('simpleCtrl', {
+          $scope: scope,
+          $baz: $baz
+        });
+        expect(scope.baz()).to.equal(4);
+      });
+    });
+
+    it('should be able to mock constant', function() {
+      EasyTest.mockModule('simpleapp', [{
+        name: 'foo',
+        constant: [666, 1337]
+      }]);
+      inject(function(foo) {
+        expect(foo).to.deep.equal([666, 1337]);
+      });
+    });
+
+    it('should be able to mock value', function() {
+      EasyTest.mockModule('simpleapp', [{
+        name: 'bar',
+        value: 5
+      }]);
+      inject(function(bar) {
+        expect(bar).to.equal(5);
+      });
+    });
+
+    it('should be able to mock factory', function() {
+      EasyTest.mockModule('simpleapp', [{
+        name: 'FakeFactory',
+        factory: {
+          testFunction: function() {}
+        }
+      }]);
+      inject(function(FakeFactory) {
+        expect(FakeFactory).to.respondTo('testFunction');
+      });
+    });
+
+    it('should be able to mock factory as hash', function() {
+      EasyTest.mockModule('simpleapp', {
+        'FakeFactory': {
+          testFunction: function() {}
+        }
+      });
+      inject(function(FakeFactory) {
+        expect(FakeFactory).to.respondTo('testFunction');
+      });
+    });
+
+    it('should be able to mock service', function() {
       EasyTest.mockModule('simpleapp', [{
         name: 'FakeService',
-        provider: { testFunction: function() {} }
+        service: {
+          testFunction: function() {} 
+        }
       }]);
       inject(function(FakeService) {
         expect(FakeService).to.respondTo('testFunction');
       });
     });
-
   });
 
   describe('#mockModules', function() {
@@ -65,7 +129,7 @@ describe('angular-easy-test', function() {
         name: 'simpleapp3',
         values: [{
           name: 'TestService3',
-          provider: {
+          factory: {
             fakePropHere: 1
           }
         }]

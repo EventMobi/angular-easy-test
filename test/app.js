@@ -44,3 +44,17 @@ simpleapp3.factory('TestService3', function() {
     anotherPropHere: 1
   };
 });
+
+var simpleapp4 = angular.module('simpleapp4', [])
+  .controller('simpleCtrl', function($scope, $baz) {
+    $scope.baz = function baz() {
+      return $baz;
+    };
+  })
+  .provider({
+    $baz: function somethingStupidThatShouldBeMocked() {
+      this.$get = function $get() {
+        return 'arbitrary result that should be mocked';
+      };
+    }
+  });
