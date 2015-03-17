@@ -445,6 +445,147 @@ expect(context.controller.myFunc).to.be.a('function');</code></pre>
         
             
 <dt>
+    <h4 class="name" id="getBoundScope"><span class="type-signature">&lt;static> </span>getBoundScope<span class="signature">(angularElement)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Allows access to the controller scope for directive that has
+`bindToController` set to true.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>angularElement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An angular element gotten from compiled
+HTML.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line227">line 227</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The scope of the bound controller.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="getController"><span class="type-signature">&lt;static> </span>getController<span class="signature">(controllerName)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
     
@@ -872,7 +1013,7 @@ some attribute, optionally with some given value.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line237">line 237</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line251">line 251</a>
     </li></ul></dd>
     
     
@@ -1192,11 +1333,7 @@ that type as their value, separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-<<<<<<< HEAD
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line274">line 274</a>
-=======
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line240">line 240</a>
->>>>>>> Update jsdocs for compileDirective with scope
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line288">line 288</a>
     </li></ul></dd>
     
     
@@ -1673,11 +1810,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-<<<<<<< HEAD
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line342">line 342</a>
-=======
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line308">line 308</a>
->>>>>>> Update jsdocs for compileDirective with scope
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line356">line 356</a>
     </li></ul></dd>
     
     
@@ -1834,11 +1967,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-<<<<<<< HEAD
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line314">line 314</a>
-=======
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line280">line 280</a>
->>>>>>> Update jsdocs for compileDirective with scope
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line328">line 328</a>
     </li></ul></dd>
     
     
@@ -1995,11 +2124,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-<<<<<<< HEAD
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line370">line 370</a>
-=======
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line336">line 336</a>
->>>>>>> Update jsdocs for compileDirective with scope
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line384">line 384</a>
     </li></ul></dd>
     
     
@@ -2056,7 +2181,7 @@ EasyTest.testService('MyServiceName', {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Wed Mar 11 2015 01:58:52 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Mar 17 2015 10:52:20 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
