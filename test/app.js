@@ -22,6 +22,15 @@ app.controller('TestController', function($scope, TestService1) {
   this.testFunction = function() {};
 });
 
+app.controller('TestBoundController', function(TestService1) {
+  this.one = function() {};
+  this.two = 'two';
+  this.test = false;
+  this.something = {};
+  this.somethingElse = {};
+  this.testFunction = function() {};
+});
+
 app.directive('testDirective', function() {
   return {
     template: '<div><p>Testa</p></div>',
