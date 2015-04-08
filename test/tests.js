@@ -300,6 +300,19 @@ describe('angular-easy-test', function() {
       expect(element.text()).to.equal('6');
     });
 
+    it('should attach compiled directive to another element', function() {
+      var parent = angular.element('<div></div>');
+      var element = EasyTest.compileDirective('<b>{{something}}</b>', {
+        something: 6
+      }, parent);
+      expect(parent.children()[0].textContent).to.equal('6');
+    });
+
+    it('should attach compiled directive to another element without scope provided', function() {
+      var parent = angular.element('<div></div>');
+      var element = EasyTest.compileDirective('<b test-directive></b>', parent);
+      expect(parent.children()[0].textContent).to.equal('Testa');
+    });
   });
 
   describe('#hasAttr', function() {
