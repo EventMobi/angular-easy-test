@@ -122,7 +122,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="compileDirective"><span class="type-signature">&lt;static> </span>compileDirective<span class="signature">(directiveHTML, scope)</span><span class="type-signature"> &rarr; {HTMLElement}</span></h4>
+    <h4 class="name" id="compileDirective"><span class="type-signature">&lt;static> </span>compileDirective<span class="signature">(directiveHTML, scope, parent)</span><span class="type-signature"> &rarr; {HTMLElement}</span></h4>
     
     
 </dt>
@@ -209,6 +209,33 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+|
+
+<span class="param-type">angular.element</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">an element to attach the compiled directive as a child.
+ If <code>scope</code> is an HTMLElement or an Angular element, it will be treated as the parent.</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -236,7 +263,7 @@ this directive may need beforehand. See the <a href="EasyTest.html#mockModule">E
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line272">line 272</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line285">line 285</a>
     </li></ul></dd>
     
     
@@ -289,6 +316,15 @@ expect(element.length).to.equal(expectedLength);</code></pre>
     <pre class="prettyprint"><code>var scope = { a: 1, b: 'something' };
 var element = EasyTest.compileDirective('&lt;p&gt;{{a}} {{b}}&lt;/p&gt;', scope);
 expect(element.text()).to.equal('1 something');</code></pre>
+
+    <pre class="prettyprint"><code>var scope = { foo: 'bar' };
+var parent = angular.element('&lt;div&gt;&lt;/div&gt;');
+var element = EasyTest.compileDirective('&lt;p&gt;{{foo}}&lt;/p&gt;', scope, parent);
+expect(angular.element(parent.children()[0]).text()).to.equal('bar');</code></pre>
+
+    <pre class="prettyprint"><code>var parent = angular.element('&lt;div&gt;&lt;/div&gt;');
+var element = EasyTest.compileDirective('&lt;p&gt;baz&lt;/p&gt;', parent);
+expect(angular.element(parent.children()[0]).text()).to.equal('baz');</code></pre>
 
     
 </dd>
@@ -707,7 +743,7 @@ HTML.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line298">line 298</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line327">line 327</a>
     </li></ul></dd>
     
     
@@ -1184,7 +1220,7 @@ some attribute, optionally with some given value.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line322">line 322</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line351">line 351</a>
     </li></ul></dd>
     
     
@@ -1504,7 +1540,7 @@ that type as their value, separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line359">line 359</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line388">line 388</a>
     </li></ul></dd>
     
     
@@ -1991,7 +2027,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line427">line 427</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line456">line 456</a>
     </li></ul></dd>
     
     
@@ -2148,7 +2184,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line399">line 399</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line428">line 428</a>
     </li></ul></dd>
     
     
@@ -2305,7 +2341,7 @@ separated by spaces.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line455">line 455</a>
+        <a href="easy-test.js.html">easy-test.js</a>, <a href="easy-test.js.html#line484">line 484</a>
     </li></ul></dd>
     
     
@@ -2362,7 +2398,7 @@ EasyTest.testService('MyServiceName', {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Mar 17 2015 16:48:36 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Thu Apr 09 2015 10:01:21 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
