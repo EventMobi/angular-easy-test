@@ -190,6 +190,17 @@ describe('angular-easy-test', function() {
       done(res);
     });
 
+    it('should not return error if spec matches (using an array for properties)', function(done) {
+      var context = EasyTest.createTestContext('TestController');
+      var res = EasyTest.looksLike(context.$scope, {
+        'function': [ 'one' ],
+        'string': [ 'two' ],
+        'boolean': [ 'test' ],
+        'object': [ 'something', 'somethingElse' ]
+      });
+      done(res);
+    });
+
     it('should return error if a property expected is not there', function() {
       var context = EasyTest.createTestContext('TestController');
       var res = EasyTest.looksLike(context.$scope, {
