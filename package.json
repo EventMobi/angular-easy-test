@@ -36,6 +36,10 @@
     "matchdep": "0.3.0",
     "mocha": "2.2.5"
   },
+  "peerDependencies": {
+    "angular": "~1.3.0",
+    "angular-mocks": "~1.3.0"
+  },
   "scripts": {
     "test": "grunt"
   }
