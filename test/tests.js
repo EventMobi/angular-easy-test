@@ -4,6 +4,12 @@
  * Test suite for angular-easy-test
  */
 
+var angular = require('angular');
+var EasyTest = require('../lib/easy-test');
+
+// Initialize 'simpleapp' modules
+require('./app');
+
 describe('angular-easy-test', function() {
 
   // Properties that are on our test service and controller.

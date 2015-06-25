@@ -5,9 +5,7 @@
     "mocha": true
   },
   "globals": {
-    "angular": true,
     "inject": true,
-    "EasyTest": true,
     "expect": true
   },
   "rules": {

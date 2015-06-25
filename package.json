@@ -2,7 +2,8 @@
   "name": "angular-easy-test",
   "version": "2.2.0",
   "description": "Framework for making Angular Unit Test's easier to write.",
-  "main": "lib/easy-test.js",
+  "author": "EventMobi",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/eventmobi/angular-easy-test.git"
@@ -14,8 +15,10 @@
     "easy",
     "unit"
   ],
-  "author": "EventMobi",
-  "license": "MIT",
+  "main": "dist/easy-test.js",
+  "scripts": {
+    "test": "grunt"
+  },
   "devDependencies": {
     "angular": "1.3.16",
     "angular-mocks": "1.3.16",
@@ -33,14 +36,14 @@
     "karma-coverage": "0.2.7",
     "karma-mocha": "0.1.9",
     "karma-threshold-reporter": "0.1.12",
+    "karma-webpack": "1.5.1",
     "matchdep": "0.3.0",
-    "mocha": "2.2.5"
+    "mocha": "2.2.5",
+    "node-libs-browser": "0.5.2",
+    "webpack": "1.9.12"
   },
   "peerDependencies": {
     "angular": "~1.3.0",
     "angular-mocks": "~1.3.0"
-  },
-  "scripts": {
-    "test": "grunt"
   }
 }
