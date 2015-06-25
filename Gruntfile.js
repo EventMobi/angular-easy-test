@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     eslint: {
-      all: ['Gruntfile.js', 'lib/*.js', 'test/**/*.js']
+      all: ['Gruntfile.js', 'karma.conf.js', 'lib/*.js', 'test/**/*.js']
     },
     karma: {
       options: {
