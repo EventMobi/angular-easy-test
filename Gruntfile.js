@@ -26,8 +26,12 @@ module.exports = function(grunt) {
     release: {
       options: {
         npm: false,
-        commitMessage: 'Release <%= version %>'
+        commitMessage: 'Release <%= version %>',
+        beforeRelease: ['webpack:dist']
       }
+    },
+    webpack: {
+      dist: require('./webpack.config')
     },
     jsdoc: {
       dist: {
