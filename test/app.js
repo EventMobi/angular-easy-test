@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Simple test app.
  */
@@ -13,7 +15,7 @@ app.factory('TestService1', function() {
   };
 });
 
-app.controller('TestController', function($scope, TestService1) {
+app.controller('TestController', function($scope, TestService1) {  // eslint-disable-line no-unused-vars
   $scope.one = function() {};
   $scope.two = 'two';
   $scope.test = false;
@@ -22,7 +24,7 @@ app.controller('TestController', function($scope, TestService1) {
   this.testFunction = function() {};
 });
 
-app.controller('TestBoundController', function(TestService1) {
+app.controller('TestBoundController', function(TestService1) {  // eslint-disable-line no-unused-vars
   this.one = function() {};
   this.two = 'two';
   this.test = false;
@@ -54,7 +56,7 @@ simpleapp3.factory('TestService3', function() {
   };
 });
 
-var simpleapp4 = angular.module('simpleapp4', [])
+angular.module('simpleapp4', [])
   .controller('simpleCtrl', function($scope, $baz) {
     $scope.baz = function baz() {
       return $baz;

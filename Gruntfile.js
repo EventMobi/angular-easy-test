@@ -1,23 +1,16 @@
+'use strict';
+
 module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    jshint: {
-      options: {
-        reporter: require('jshint-stylish'),
-        globals: {
-          angular: true,
-          inject: true,
-          expect: true,
-          window: true
-        }
-      },
-      all: [ 'Gruntfile.js', 'lib/*.js', 'test/**/*.js' ]
+    eslint: {
+      all: ['Gruntfile.js', 'karma.conf.js', 'lib/*.js', 'test/**/*.js']
     },
     karma: {
       options: {
-        configFile: 'karma.conf.js',
+        configFile: 'karma.conf.js'
       },
       unit: {
         browsers: [ 'Chrome' ],
@@ -54,6 +47,6 @@ module.exports = function(grunt) {
       }
     }
   });
-  
-  grunt.registerTask('default', [ 'jshint', 'karma:unit' ]);
+
+  grunt.registerTask('default', ['eslint', 'karma:unit']);
 };

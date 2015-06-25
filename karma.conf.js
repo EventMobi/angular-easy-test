@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(karma) {
   karma.set({
     basePath: '',
@@ -17,8 +19,8 @@ module.exports = function(karma) {
       lines: 89
     },
     port: 9877,
-    background : false,
-    singleRun : true,
+    background: false,
+    singleRun: true,
     runnerPort: 9101,
     colors: true,
     autoWatch: false,
@@ -45,4 +47,4 @@ module.exports = function(karma) {
       }]
     }
   });
-}
+};
