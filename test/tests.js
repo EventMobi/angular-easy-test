@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Test suite for angular-easy-test
  */
@@ -27,7 +29,7 @@ describe('angular-easy-test', function() {
 
     it('should mock correct module', function() {
       // Will work correctly if mockModule worked in the beforeEach call.
-      inject(function(TestService1) {});
+      inject(function(TestService1) {});  // eslint-disable-line no-unused-vars
     });
 
     it('should be able to mock provider', function() {
@@ -97,7 +99,7 @@ describe('angular-easy-test', function() {
       EasyTest.mockModule('simpleapp', [{
         name: 'FakeService',
         service: {
-          testFunction: function() {} 
+          testFunction: function() {}
         }
       }]);
       inject(function(FakeService) {
@@ -265,7 +267,7 @@ describe('angular-easy-test', function() {
     it('should work passing in a controller', function(done) {
       var controller = EasyTest.getController('TestController');
       var res = EasyTest.testController(controller, {
-        'function': 'testFunction',
+        'function': 'testFunction'
       });
       done(res);
     });
@@ -313,7 +315,7 @@ describe('angular-easy-test', function() {
 
     it('should attach compiled directive to another element', function() {
       var parent = angular.element('<div></div>');
-      var element = EasyTest.compileDirective('<b>{{something}}</b>', {
+      EasyTest.compileDirective('<b>{{something}}</b>', {
         something: 6
       }, parent);
       expect(parent.children()[0].textContent).to.equal('6');
@@ -321,7 +323,7 @@ describe('angular-easy-test', function() {
 
     it('should attach compiled directive to another element without scope provided', function() {
       var parent = angular.element('<div></div>');
-      var element = EasyTest.compileDirective('<b test-directive></b>', parent);
+      EasyTest.compileDirective('<b test-directive></b>', parent);
       expect(parent.children()[0].textContent).to.equal('Testa');
     });
   });

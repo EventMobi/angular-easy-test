@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "mocha": true
+  },
+  "globals": {
+    "angular": true,
+    "inject": true,
+    "EasyTest": true,
+    "expect": true
+  },
+  "rules": {
+    "quotes": [2, "single"]
+  }
+}
