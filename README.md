@@ -1,21 +1,45 @@
 # angular-easy-test
 
-[![Circle CI](https://circleci.com/gh/EventMobi/angular-easy-test.svg?style=svg)](https://circleci.com/gh/EventMobi/angular-easy-test) [![Dependency Status](https://david-dm.org/EventMobi/angular-easy-test/dev-status.svg?theme=shields.io)](https://david-dm.org/EventMobi/angular-easy-test#info=devDependencies) [![npm-version](http://img.shields.io/npm/v/angular-easy-test.svg)](https://www.npmjs.com/package/angular-easy-test)
+[![Circle CI](https://circleci.com/gh/EventMobi/angular-easy-test.svg?style=svg)](https://circleci.com/gh/EventMobi/angular-easy-test)
+[![Dependency Status](https://david-dm.org/EventMobi/angular-easy-test.svg)](https://david-dm.org/EventMobi/angular-easy-test)
+[![devDependency Status](https://david-dm.org/EventMobi/angular-easy-test/dev-status.svg)](https://david-dm.org/EventMobi/angular-easy-test#info=devDependencies)
+[![npm version](http://img.shields.io/npm/v/angular-easy-test.svg)](https://www.npmjs.com/package/angular-easy-test)
 
-A framework that makes Angular Unit Test's easier to write.
+A library that makes Angular unit test's easier to write.
 
 # install
 
-`npm install angular-easy-test --save-dev --save-exact`
+```shell
+npm install angular-easy-test
+```
 
 # usage
 
-Just include `node_modules/lib/easy-test.js` into your test files. Make sure it
-comes after you've included `angular.js`.
+### CommonJS
+
+```js
+var EasyTest = require('angular-easy-test');
+```
+
+### AMD
+
+```js
+define(['angular-easy-test'], function(EasyTest) {
+  ...
+});
+```
+
+### Browser Global
+
+```html
+<script src="angular.js"></script>
+<script src="angular-mocks.js"></script>
+<script src="angular-easy-test.js"></script>
+```
 
 Here are some examples of using `EasyTest` with `Chai`.
 
-```javascript
+```js
 
 describe('MyService', function() {
 

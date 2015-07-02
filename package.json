@@ -2,7 +2,8 @@
   "name": "angular-easy-test",
   "version": "2.2.0",
   "description": "Framework for making Angular Unit Test's easier to write.",
-  "main": "lib/easy-test.js",
+  "author": "EventMobi",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/eventmobi/angular-easy-test.git"
@@ -14,18 +15,21 @@
     "easy",
     "unit"
   ],
-  "author": "EventMobi",
-  "license": "MIT",
+  "main": "dist/easy-test.js",
+  "scripts": {
+    "test": "grunt"
+  },
   "devDependencies": {
-    "angular": "1.3.5",
-    "angular-mocks": "1.3.5",
+    "angular": "1.3.16",
+    "angular-mocks": "1.3.16",
     "chai": "3.0.0",
     "grunt": "0.4.5",
-    "grunt-bump": "0.0.16",
     "grunt-contrib-jshint": "0.10.0",
     "grunt-eslint": "15.0.0",
     "grunt-jsdoc": "0.5.7",
     "grunt-karma": "0.9.0",
+    "grunt-release": "0.13.0",
+    "grunt-webpack": "1.0.8",
     "jshint-stylish": "1.0.0",
     "karma": "0.12.28",
     "karma-chai": "0.1.0",
@@ -33,10 +37,15 @@
     "karma-coverage": "0.2.7",
     "karma-mocha": "0.1.9",
     "karma-threshold-reporter": "0.1.12",
+    "karma-webpack": "1.5.1",
     "matchdep": "0.3.0",
-    "mocha": "2.2.5"
+    "mocha": "2.2.5",
+    "node-libs-browser": "0.5.2",
+    "webpack": "1.9.12",
+    "webpack-dev-server": "1.9.0"
   },
-  "scripts": {
-    "test": "grunt"
+  "peerDependencies": {
+    "angular": "~1.3.0",
+    "angular-mocks": "~1.3.0"
   }
 }

@@ -4,6 +4,8 @@
  * Simple test app.
  */
 
+var angular = require('angular');
+
 var app = angular.module('simpleapp', []);
 
 app.factory('TestService1', function() {
@@ -69,3 +71,5 @@ angular.module('simpleapp4', [])
       };
     }
   });
+
+module.exports = app;
