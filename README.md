@@ -57,6 +57,51 @@ describe('MyService', function() {
 });
 ```
 
+### comparison with ngMock
+
+angular-easy-test is built on top of AngularJS's [ngMock](https://docs.angularjs.org/api/ngMock). Here is the same set of test cases implemented using just ngMock:
+
+```js
+describe('MyService', function() {
+
+  beforeEach(module('myModule', 'myDependentModule', function($provide, $q) {
+    $provide.value('ServiceOne', {
+      functionToFake: function() {
+        return $q.when('something');
+      };
+    })
+  }));
+
+  it('should look like my service', inject(function(MyService) {
+    expect(MyService.one).to.be.a('function');
+    expect(MyService.two).to.be.a('function');
+    expect(MyService.three).to.be.a('number');
+  }));
+
+  it('some controller stuff', inject(function($rootScope, $controller) {
+    var scope = $rootScope.$new();
+    var ctrl = $controller('MyController', {
+      $scope: scope
+    })
+    expect(scope).to.have.property('something');
+    ctrl.myFunction();
+    expect(ctrl.state).to.equal('something');
+  }));
+
+  it('some service stuff', inject(function($rootScope, MyService) {
+    MyService.something();
+    $rootScope.$digest();
+    expect(MyService.property).to.equal('something');
+  }));
+
+  it('some directive stuff', inject(function($compile, $rootScope) {
+    var element = $compile('<div my-directive></div>')($rootScope.$new());
+    expect(element.find('li')).to.have.length(10);
+  }));
+
+});
+```
+
 # documentation
 
 See the [jsdocs](http://eventmobi.github.io/angular-easy-test).
