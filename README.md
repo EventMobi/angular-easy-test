@@ -5,7 +5,7 @@
 [![devDependency Status](https://david-dm.org/EventMobi/angular-easy-test/dev-status.svg)](https://david-dm.org/EventMobi/angular-easy-test#info=devDependencies)
 [![npm version](http://img.shields.io/npm/v/angular-easy-test.svg)](https://www.npmjs.com/package/angular-easy-test)
 
-A library that makes Angular unit test's easier to write.
+A library that makes Angular unit tests easier to write.
 
 # install
 
