@@ -86,13 +86,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * expect(services.MyServiceOne).to.be.an.instanceOf(MyServiceOne);
 	 */
 	EasyTest.injectify = function injectify(injectibles) {
-	  var obj = [];
-	  injectibles.push(function() {
+	  var obj = {};
+	  inject(injectibles.concat(function() {
 	    for (var i = 0, l = arguments.length; i < l; i++) {
 	      obj[injectibles[i]] = arguments[i];
 	    }
-	  });
-	  inject(injectibles);
+	  }));
 	  return obj;
 	};
 
@@ -141,7 +140,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // iterate over each service, mocking it by type
 	  var mockTypes = [ 'factory', 'service', 'provider', 'value', 'constant' ];
-	  angular.mock.module(moduleName, function($provide) {
+	  angular.mock.module(moduleName, ['$provide', function($provide) {
 	    services.forEach(function serviceProvide(service) {
 	      mockTypes.forEach(function mockIfExists(mocktype) {
 	        if (service[mocktype]) {
@@ -158,7 +157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      });
 	    });
-	  });
+	  }]);
 	};
 
 	/**
@@ -237,7 +236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	EasyTest.createTestContext = function createTestContext(controller) {
 	  var testContext = {};
-	  inject(function($rootScope, $controller) {
+	  inject(['$rootScope', '$controller', function($rootScope, $controller) {
 	    var $scope = $rootScope.$new();
 	    testContext = {
 	      $scope: $scope,
@@ -245,7 +244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        $scope: $scope
 	      })
 	    };
-	  });
+	  }]);
 	  return testContext;
 	};
 
@@ -288,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	EasyTest.getBoundController = function getBoundController(controllerName, scope) {
 	  var controller = {};
 
-	  inject(function($rootScope, $controller) {
+	  inject(['$rootScope', '$controller', function($rootScope, $controller) {
 	    // The third arg for $controller is an undocumented parameter
 	    // that allows us to delay the instantiation of the controller.
 	    // This approach may break in a future version of angular, but it is
@@ -296,7 +295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    controller = $controller(controllerName, {
 	      $scope: $rootScope.$new()
 	    }, true);
-	  });
+	  }]);
 
 	  if (scope) {
 	    angular.extend(controller.instance, scope);
@@ -351,7 +350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  var $el;
-	  inject(function($compile, $rootScope) {
+	  inject(['$compile', '$rootScope', function($compile, $rootScope) {
 	    var $scope = $rootScope.$new();
 	    if (scope) {
 	      angular.extend($scope, scope);
@@ -367,7 +366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    $compile($el)($scope);
 	    $scope.$digest();
-	  });
+	  }]);
 	  return $el;
 	};
 
