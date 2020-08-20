@@ -10,7 +10,7 @@ A library that makes Angular unit tests easier to write.
 # install
 
 ```shell
-npm install angular-easy-test
+npm install @eventmobi/angular-easy-test
 ```
 
 # usage
@@ -18,7 +18,7 @@ npm install angular-easy-test
 ### CommonJS
 
 ```js
-var EasyTest = require('angular-easy-test');
+var EasyTest = require('@eventmobi/angular-easy-test');
 ```
 
 ### AMD
